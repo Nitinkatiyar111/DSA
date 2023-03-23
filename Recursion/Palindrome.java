@@ -2,20 +2,37 @@ import java.util.Scanner;
 
 public class Palindrome {
 
-    public static boolean func(int n, String a) {
+    static boolean isPalRec(String s, int i, int j) {
 
-        if (n >= a.length() / 2)
-
+        if (i == j)
             return true;
-        if (a.charAt(n) != a.length() - n - 1)
+
+        if ((s.charAt(i)) != (s.charAt(j)))
             return false;
-        return func(n + 1, a);
+
+        if (i < j + 1)
+            return isPalRec(s, i + 1, j - 1);
+
+        return true;
+
+    }
+
+    static boolean isPalindrome(String s) {
+        int n = s.length();
+
+        if (n == 0)
+            return true;
+
+        return isPalRec(s, 0, n - 1);
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String s = sc.next();
 
-     func(0, s);
-
+        if (isPalindrome(s))
+            System.out.println("Yes");
+        else
+            System.out.println("NO");
+    }
 }

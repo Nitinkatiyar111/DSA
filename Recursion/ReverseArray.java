@@ -4,7 +4,7 @@ import java.util.Arrays;
 public class ReverseArray {
 
     public static void func(int i, int a[], int n) {
-        if (n <= i)
+        if (i >= n)
             return;
         int temp = a[i];
         a[i] = a[n - 1];
